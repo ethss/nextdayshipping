@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ethsontop Dashboard</title>
+    <style>
+        body {
+            background-color: #1f1f1f;
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        h1 {
+            color: #ff8800;
+        }
+
+        .dashboard {
+            background-color: #2f2f2f;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .info {
+            color: #ff8800;
+            margin-bottom: 20px;
+        }
+
+        .channels {
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .messages {
+            text-align: left;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>ethsontop Dashboard</h1>
+    <div class="dashboard">
+        <div class="info">
+            <p>Requests Sent: {{ requests_sent }}</p>
+        </div>
+        <div class="channels">
+            <h2>Configured Channels:</h2>
+            <ul>
+                {% for channel in channels %}
+                    <li>{{ channel.channelid }} - Token: {{ channel.token }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="messages">
+            <h2>System Messages:</h2>
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
