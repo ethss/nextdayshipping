@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ethsontop Web UI</title>
+    <style>
+        body {
+            background: #1f1f1f;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        h1 {
+            color: #ff8800;
+        }
+
+        form {
+            display: inline-block;
+            text-align: left;
+            background: #2f2f2f;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0;
+            color: #ff8800;
+        }
+
+        input {
+            padding: 10px;
+            margin-bottom: 15px;
+            width: 100%;
+            box-sizing: border-box;
+            background: #3f3f3f;
+            color: #fff;
+            border: 1px solid #ff8800;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background: #ff8800;
+            color: #1f1f1f;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background: #ffaa00;
+        }
+
+        .container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .statistics {
+            width: 45%;
+            background: #2f2f2f;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>ethsontop Web UI</h1>
+    <form id="configureForm" onsubmit="toggleSending(); return false;">
+        <label for="token">Token:</label><input type="text" id="token" name="token" required><br>
+        <label for="channel">Channel ID:</label><input type="text" id="channel" name="channel" required><br>
+        <label for="customMessage">Message:</label><input type="text" id="customMessage" name="customMessage" required><br>
+        <label for="interval">Interval (s):</label><input type="number" id="interval" name="interval" required><br>
+        <input type="submit" value="Start" id="startStopButton">
+    </form>
+    <div class="container">
+        <div class="statistics" id="statistics">
+            <h3>Statistics:</h3>
+            <p>Total Forms: 0</p>
+            <p>Total Messages Sent: 0</p>
+        </div>
+    </div>
+
+    <script>
+        var intervalId;
+        var totalMessagesSent = 0;
+        var sending = false;
+
+        function toggleSending() {
+            if (sending) {
+                stopSending();
+            } else {
+                startSending();
+            }
+        }
+
+        function startSending() {
+            var token = document.getElementById("token").value;
+            var channel = document.getElementById("channel").value;
+            var customMessage = document.getElementById("customMessage").value;
+            var interval = document.getElementById("interval").value;
+
+            // Clear any existing interval
+            clearInterval(intervalId);
+
+            // Reset total messages sent
+            totalMessagesSent = 0;
+
+            // Update statistics
+            document.getElementById("statistics").innerHTML = `<h3>Statistics:</h3><p>Total Forms: 1</p><p>Total Messages Sent: 0</p>`;
+
+            // Start sending messages at the specified interval
+            intervalId = setInterval(function () {
+                var payload = {
+                    content: customMessage
+                };
+
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", `https://discord.com/api/v10/channels/${channel}/messages`);
+                xhr.setRequestHeader("Content-Type", "application/json");
+                xhr.setRequestHeader("User-Agent", "DiscordBot");
+                xhr.setRequestHeader("Authorization", token);
+
+                xhr.onload = function () {
+                    if (xhr.status !== 200) {
+                        console.error('Error:', xhr.statusText);
+                    } else {
+                        // Update total messages sent
+                        totalMessagesSent++;
+                        document.getElementById("statistics").innerHTML = `<h3>Statistics:</h3><p>Total Forms: 1</p><p>Total Messages Sent: ${totalMessagesSent}</p>`;
+                    }
+                };
+
+                xhr.onerror = function () {
+                    console.error('Request failed');
+                };
+
+                xhr.send(JSON.stringify(payload));
+            }, interval * 1000); // Convert seconds to milliseconds
+
+            // Change button text and update state
+            document.getElementById("startStopButton").value = "Stop";
+            sending = true;
+        }
+
+        function stopSending() {
+            // Stop sending messages by clearing the interval
+            clearInterval(intervalId);
+
+            // Change button text and update state
+            document.getElementById("startStopButton").value = "Start";
+            sending = false;
+        }
+    </script>
+</body>
+</html>
