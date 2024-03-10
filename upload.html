@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MP4 File Upload</title>
+</head>
+<body>
+  <h1>Upload MP4 File</h1>
+  <form action="upload.php" method="post" enctype="multipart/form-data">
+    <input type="file" name="mp4file" accept="video/mp4">
+    <input type="submit" value="Upload">
+  </form>
+  
+  <?php
+  // Display URL if uploaded successfully
+  if (isset($_GET['url'])) {
+      echo '<p>File uploaded successfully. You can access it <a href="' . $_GET['url'] . '">here</a>.</p>';
+  }
+  ?>
+</body>
+</html>
