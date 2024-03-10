@@ -7,16 +7,42 @@
 </head>
 <body>
   <h1>Upload MP4 File</h1>
-  <form action="upload.php" method="post" enctype="multipart/form-data">
-    <input type="file" name="mp4file" accept="video/mp4">
-    <input type="submit" value="Upload">
+  <form id="uploadForm" enctype="multipart/form-data">
+    <input type="file" id="mp4file" accept="video/mp4">
+    <input type="button" value="Upload" onclick="uploadFile()">
   </form>
   
-  <?php
-  // Display URL if uploaded successfully
-  if (isset($_GET['url'])) {
-      echo '<p>File uploaded successfully. You can access it <a href="' . $_GET['url'] . '">here</a>.</p>';
-  }
-  ?>
+  <p id="uploadStatus"></p>
+  <p id="fileUrl" style="display: none;"></p>
+  
+  <script>
+    function uploadFile() {
+      var fileInput = document.getElementById('mp4file');
+      var file = fileInput.files[0];
+      var formData = new FormData();
+      formData.append('mp4file', file);
+      
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', 'upload.php', true);
+      xhr.onload = function() {
+        if (xhr.status === 200) {
+          var response = JSON.parse(xhr.responseText);
+          if (response.success) {
+            document.getElementById('uploadStatus').innerHTML = 'File uploaded successfully. You can access it <a href="' + response.url + '">here</a>.';
+            document.getElementById('fileUrl').innerHTML = response.url;
+            document.getElementById('fileUrl').style.display = 'block';
+          } else {
+            document.getElementById('uploadStatus').innerHTML = 'Error: ' + response.message;
+          }
+        } else {
+          document.getElementById('uploadStatus').innerHTML = 'Error: ' + xhr.statusText;
+        }
+      };
+      xhr.onerror = function() {
+        document.getElementById('uploadStatus').innerHTML = 'Error: Network failure during upload.';
+      };
+      xhr.send(formData);
+    }
+  </script>
 </body>
 </html>
