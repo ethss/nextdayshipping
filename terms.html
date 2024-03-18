@@ -3,28 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hacker Page</title>
+    <title>Hacker Terminal</title>
     <style>
         body {
             background-color: #000;
             color: #0f0;
             font-family: monospace;
-            text-align: center;
+            text-align: left;
             padding: 20px;
+            overflow: hidden;
         }
         .container {
             max-width: 600px;
             margin: 0 auto;
         }
-        pre {
-            font-family: monospace;
+        .terminal {
+            border: 2px solid #0f0;
+            padding: 10px;
+            overflow: auto;
+            height: 300px;
+            background-color: #000;
+        }
+        .prompt {
+            color: #0f0;
+        }
+        .output {
+            color: #0f0;
             white-space: pre-wrap;
+            font-family: monospace;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <pre>
+        <div class="terminal">
+            <div class="output">
+                <pre>
   _______ _    _ _______ _   _  ______ _     _       _______ _______ 
  |__   __| |  | |__   __| \ | |/  ____| |   | |   /\|__   __|__   __|
     | |  | |  | |  | |  |  \| | | (___ | |   | |  /  \  | |     | |   
@@ -41,21 +55,25 @@
 | )      | (__/  ) | (____/\| ) \ \__| (____/\   | |   
 |/       (______/  (_______/|/   \__/(_______/   )_(   
                                                       
-</pre>
-        <p>
-            <strong>1. NO SNITCHING</strong><br>
-            Snitching results in permanent blacklist from all services.
-        </p>
-        <p>
-            <strong>2. No Pedo Activity</strong>
-        </p>
-        <p>
-            <strong>3. No Abuse of Services</strong>
-        </p>
-        <br>
-        <br>
-        <br>
-        <p><strong>Love</strong></p>
+                </pre>
+                <div class="output">
+                    <p>
+                        <span class="prompt">$</span> <span>1. NO SNITCHING</span><br>
+                        <span>Snitching results in permanent blacklist from all services.</span>
+                    </p>
+                    <p>
+                        <span class="prompt">$</span> <span>2. No Pedo Activity</span>
+                    </p>
+                    <p>
+                        <span class="prompt">$</span> <span>3. No Abuse of Services</span>
+                    </p>
+                    <br>
+                    <br>
+                    <br>
+                    <p><span class="prompt">$</span> <span>Love</span></p>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>
