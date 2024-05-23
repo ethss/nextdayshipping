@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy</title>
-    <style id="dynamic-style">
+    <style id="style1">
         body {
             background-color: #000;
             color: #0f0;
@@ -164,6 +164,108 @@
             }
         }
     </style>
+    <style id="style2" disabled>
+        body {
+            background-color: #f0f0f0;
+            color: #333;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+            overflow: hidden; /* Hide scrollbar */
+        }
+        .container {
+            max-width: 800px;
+            padding: 20px;
+            border: 2px solid #333;
+            box-shadow: 0 0 20px #ccc;
+            position: relative;
+            animation: fadeIn 2s ease-in-out;
+            background-color: rgba(255, 255, 255, 0.9);
+            overflow: auto;
+        }
+        h1, h2 {
+            color: #333;
+            text-transform: none;
+            position: relative;
+        }
+        h1 {
+            overflow: hidden;
+            border-right: none;
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: normal;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        a {
+            color: #007BFF;
+            text-decoration: none;
+            position: relative;
+        }
+        a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            display: block;
+            background: #007BFF;
+            transition: width .3s;
+        }
+        a:hover::after {
+            width: 100%;
+        }
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        ul li::before {
+            content: '';
+        }
+        code {
+            background-color: #e8e8e8;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        pre {
+            background-color: #e8e8e8;
+            padding: 10px;
+            border-radius: 4px;
+            overflow: auto;
+        }
+        .neon-button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            border: 2px solid #007BFF;
+            color: #007BFF;
+            text-transform: none;
+            letter-spacing: normal;
+            text-decoration: none;
+            position: relative;
+            transition: all 0.3s;
+            box-shadow: none;
+        }
+        .neon-button:hover {
+            background-color: #007BFF;
+            color: #fff;
+            transform: none;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="matrix-bg">
@@ -171,32 +273,13 @@
     </div>
     <div class="container">
         <h1 class="movable">Privacy Policy</h1>
-        <p class="movable intro">Your privacy is critically important to us. At Our Company, we have a few fundamental principles:</p>
+        <p class="movable intro">Your privacy is important to us.</p>
         <ul>
-            <li class="movable">We don’t ask you for personal information unless we truly need it.</li>
-            <li class="movable">We don’t share your personal information except to comply with the law, develop our products, or protect our rights.</li>
-            <li class="movable">We don’t store personal information on our servers unless required for the ongoing operation of our services.</li>
+            <li class="movable">We collect information to provide better services to our users.</li>
+            <li class="movable">We do not share your personal information with companies, organizations, or individuals outside of our company.</li>
+            <li class="movable">You have the right to access and update your personal information at any time.</li>
         </ul>
-
-        <h2 class="movable">Website Visitors</h2>
-        <p class="movable">Like most website operators, Our Company collects non-personally-identifying information of the sort that web browsers and servers typically make available, such as the browser type, language preference, referring site, and the date and time of each visitor request.</p>
-
-        <h2 class="movable">Gathering of Personally-Identifying Information</h2>
-        <p class="movable">Certain visitors to Our Company's websites choose to interact with Our Company in ways that require Our Company to gather personally-identifying information. The amount and type of information that Our Company gathers depend on the nature of the interaction.</p>
-
-        <h2 class="movable">Security</h2>
-        <p class="movable">The security of your Personal Information is important to us, but remember that no method of transmission over the Internet, or method of electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your Personal Information, we cannot guarantee its absolute security.</p>
-
-        <h2 class="movable">Advertisements</h2>
-        <p class="movable">Ads appearing on our website may be delivered to users by advertising partners, who may set cookies. These cookies allow the ad server to recognize your computer each time they send you an online advertisement to compile information about you or others who use your computer.</p>
-
-        <h2 class="movable">Privacy Policy Changes</h2>
-        <p class="movable">Although most changes are likely to be minor, Our Company may change its Privacy Policy from time to time, and in Our Company’s sole discretion. Our Company encourages visitors to frequently check this page for any changes to its Privacy Policy.</p>
-
-        <h2 class="movable">Contact Information</h2>
-        <p class="movable">If you have any questions about this Privacy Policy, please contact us via email or phone.</p>
-
-        <a href="#" class="neon-button" onclick="switchStyle()">Switch Style</a>
+        <button class="neon-button" onclick="switchStyle()">Switch Style</button>
     </div>
     <script>
         // Matrix Background Animation
@@ -207,7 +290,7 @@
         canvas.height = window.innerHeight;
 
         const matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%";
-        const fontSize = 10;
+        const fontSize = 16;
         const columns = canvas.width / fontSize;
 
         const drops = [];
@@ -238,112 +321,16 @@
 
         // Style Switcher
         function switchStyle() {
-            const styleElement = document.getElementById('dynamic-style');
-            const currentStyle = styleElement.innerHTML;
+            const style1 = document.getElementById('style1');
+            const style2 = document.getElementById('style2');
 
-            const newStyle = `
-            body {
-                background-color: #f0f0f0;
-                color: #333;
-                font-family: 'Arial', sans-serif;
-                margin: 0;
-                padding: 20px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                min-height: 100vh;
-                box-sizing: border-box;
-                overflow: hidden; /* Hide scrollbar */
+            if (style1.disabled) {
+                style1.disabled = false;
+                style2.disabled = true;
+            } else {
+                style1.disabled = true;
+                style2.disabled = false;
             }
-            .container {
-                max-width: 800px;
-                padding: 20px;
-                border: 2px solid #333;
-                box-shadow: 0 0 20px #ccc;
-                position: relative;
-                animation: fadeIn 2s ease-in-out;
-                background-color: rgba(255, 255, 255, 0.9);
-                overflow: auto;
-            }
-            h1, h2 {
-                color: #333;
-                text-transform: none;
-                position: relative;
-            }
-            h1 {
-                overflow: hidden;
-                border-right: none;
-                white-space: nowrap;
-                margin: 0 auto;
-                letter-spacing: normal;
-            }
-            @keyframes fadeIn {
-                from { opacity: 0; transform: translateY(-20px); }
-                to { opacity: 1; transform: translateY(0); }
-            }
-            a {
-                color: #007BFF;
-                text-decoration: none;
-                position: relative;
-            }
-            a::after {
-                content: '';
-                position: absolute;
-                width: 0;
-                height: 2px;
-                display: block;
-                background: #007BFF;
-                transition: width .3s;
-            }
-            a:hover::after {
-                width: 100%;
-            }
-            ul {
-                list-style-type: disc;
-                padding-left: 20px;
-            }
-            ul li::before {
-                content: '';
-            }
-            code {
-                background-color: #e8e8e8;
-                padding: 2px 4px;
-                border-radius: 4px;
-            }
-            pre {
-                background-color: #e8e8e8;
-                padding: 10px;
-                border-radius: 4px;
-                overflow: auto;
-            }
-            .neon-button {
-                display: inline-block;
-                padding: 10px 20px;
-                margin-top: 20px;
-                border: 2px solid #007BFF;
-                color: #007BFF;
-                text-transform: none;
-                letter-spacing: normal;
-                text-decoration: none;
-                position: relative;
-                transition: all 0.3s;
-                box-shadow: none;
-            }
-            .neon-button:hover {
-                background-color: #007BFF;
-                color: #fff;
-                transform: none;
-            }
-            @media (max-width: 600px) {
-                body {
-                    padding: 10px;
-                }
-                .container {
-                    padding: 10px;
-                }
-            }`;
-
-            styleElement.innerHTML = currentStyle === newStyle ? currentStyle : newStyle;
         }
 
         // Arrow key scrolling without scrollbar
