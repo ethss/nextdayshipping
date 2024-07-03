@@ -1,0 +1,324 @@
+<html>
+<head>
+<base>
+<title>Rocky Rikola's Portfolio</title>
+<style>
+:root {
+  --pink: hsl(338, 70%, 55%);
+  --teal: hsl(183, 70%, 62%);
+  --white: hsl(334, 7%, 95%);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  background: hsl(224, 32%, 12%);
+  background-image: conic-gradient(
+    from 0deg at 50% 50%,
+    blue,
+    purple,
+    purple,
+    blue
+  );
+  background-blend-mode: multiply;
+  color: white;
+  min-block-size: 100dvh;
+  display: grid;
+  place-items: center;
+  font-family: 'Courier New', monospace;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 800px;
+  width: 100%;
+}
+
+h1, h2 {
+  text-align: center;
+  text-shadow: 0 0 10px var(--teal);
+}
+
+.code-block {
+  --selector: var(--pink);
+  --property: var(--teal);
+  --punctuation: var(--white);
+  
+  font-size: 1.5rem;
+  font-weight: bold;
+  background: hsl(222, 45%, 7%);
+  padding: 2rem;
+  border-radius: 1rem;
+  
+  position: relative;
+  
+  transition: all 64ms linear;
+  
+  transform-style: preserve-3d;
+  transform:
+    perspective(5000px)
+    rotateY(var(--rotateY))
+    rotateX(var(--rotateX));
+}
+
+.selector { color: var(--selector); }
+.property { color: var(--property); }
+.punctuation { color: var(--punctuation); }
+.property + .punctuation { color: var(--property); }
+
+.code-block > * {
+  text-shadow: 0 0 0.3em currentColor;
+}
+
+.code-block::before,
+.code-block::after {
+  content: '';
+  position: absolute;
+  border-radius: inherit;
+}
+
+.code-block::before {
+  inset: 0.75rem;
+  background: black;
+  transform: translateZ(-49px);
+  filter: blur(24px);
+  opacity: 0.5;
+}
+
+.code-block::after {
+  inset: -1rem;
+  background: linear-gradient(-45deg, red, blue);
+  transform: translateZ(-50px);
+}
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.project {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.project:hover {
+  transform: translateY(-5px);
+}
+
+.contact {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.contact a {
+  color: var(--teal);
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.contact a:hover {
+  text-decoration: underline;
+}
+
+.audio-control {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: var(--teal);
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  z-index: 1000;
+}
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1 style="font-size: 3rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5em; position: relative; z-index: 1; background: linear-gradient(45deg, #00ffff, #ff00ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 0 0 10px rgba(0, 255, 255, 0.5), 0 0 20px rgba(255, 0, 255, 0.5); -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);">
+  Hi, I'm Rocky
+  <span style="position: absolute; content: ''; bottom: -5px; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, #00ffff, #ff00ff); transform: skew(-20deg);"></span>
+</h1>
+    <h2 class="typing-animation" style="font-size: 1.5rem; text-align: center; height: 1.5em; margin-top: 0;">Amateur Astronomer<span class="typing-line" style="display: inline-block; width: 2px; height: 1em; background-color: var(--teal); margin-left: 2px; vertical-align: middle; animation: blink 0.7s infinite;">|</span></h2>
+    <h2></h2>
+
+    <div class="code-block" id="skills">
+      <pre><code><span class="selector">.myexperience</span> <span class="punctuation">{</span>
+  <span class="property">experience</span><span class="punctuation">:</span> Worked with the APA, ODD, 
+    FFYT, and more;
+<span class="punctuation">}</span></code></pre>
+    </div>
+
+    <h2 style="text-align: center; margin-top: 40px; color: var(--teal);">My Work:</h2>
+
+    <div>
+      <div>
+      </div>
+      <div>
+        <h3>Nature's Pure Co 🌳</h3>
+        <p>No-bullcrap products handcrafted using only Nature's Purest Ingredients. Just the good stuff, nothing else.</p>
+        <div style="margin-top: 15px;">
+          <p style="text-align: center; margin-bottom: 10px; color: var(--teal); font-weight: bold; text-transform: uppercase; letter-spacing: 1px; text-shadow: 0 0 5px var(--teal);">AMOUNT SOLD OF 2ND BATCH</p>
+          <div style="background-color: #1a1a1a; border-radius: 15px; height: 30px; width: 100%; overflow: hidden; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1); position: relative; transform: perspective(500px) rotateX(5deg); margin-bottom: 20px;">
+            <div style="background: linear-gradient(90deg, var(--teal), #2ecc71); width: 43%; height: 100%; transition: width 1s ease-in-out; position: relative; overflow: hidden;">
+              <span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #000; font-weight: bold; text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);">43%</span>
+              <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0.1) 100%); transform: skew(-20deg); animation: shine 2s infinite linear;"></div>
+            </div>
+          </div>
+          
+          <p style="text-align: center; margin-bottom: 10px; color: var(--teal); font-weight: bold; text-transform: uppercase; letter-spacing: 1px; text-shadow: 0 0 5px var(--teal);">AMOUNT SOLD OF 1ST BATCH</p>
+          <div style="background-color: #1a1a1a; border-radius: 15px; height: 30px; width: 100%; overflow: hidden; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1); position: relative; transform: perspective(500px) rotateX(5deg);">
+            <div style="background: linear-gradient(90deg, var(--teal), #2ecc71); width: 100%; height: 100%; transition: width 1s ease-in-out; position: relative; overflow: hidden;">
+              <span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #000; font-weight: bold; text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);">100%</span>
+              <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0.1) 100%); transform: skew(-20deg); animation: shine 2s infinite linear;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="height: 2px; background: linear-gradient(to right, var(--pink), var(--teal)); margin: 40px 0;"></div>
+
+    <div style="margin-top: 40px;">
+      <h2 style="text-align: left; font-size: 1.2rem; color: var(--white); margin-bottom: 10px; display: flex; align-items: center;">
+  Video Editing
+  <span style="font-size: 1.5rem; margin-left: 10px;">📷</span>
+</h2>
+      <p style="text-align: center; color: var(--white); margin-bottom: 20px;">Transforming raw footage into captivating stories through the art of video editing.</p>
+      <div style="background: rgba(0, 0, 0, 0.3); padding: 20px; border-radius: 10px;">
+        <h3 style="color: var(--pink);">Recent Projects:</h3>
+        <ul style="list-style-type: none; padding: 0;">
+  <li style="margin-bottom: 10px;">🎬 "Australian Physiotherapy Association" - Worked alongside the National President to create informative videos on the APA</li>
+  <hr style="border: 0; height: 1px; background: linear-gradient(to right, transparent, var(--teal), transparent);">
+  <li style="margin-bottom: 10px;">🎓 "Boston University" - Worked with the Student Gov of B.U. to create campaigns for the presidential candidate.</li>
+  <hr style="border: 0; height: 1px; background: linear-gradient(to right, transparent, var(--teal), transparent);">
+  <li style="margin-bottom: 10px;">🚢 "Cruise Ship Explorers" - Create informative &amp; entertaining videos to promote their blog on cruises</li>
+</ul>
+      </div>
+    </div>
+
+    <div>
+  <h2 style="text-align: center; margin-bottom: 20px; font-size: 2rem; background: linear-gradient(45deg, var(--pink), var(--teal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">Connect with me</h2>
+  
+  <div style="display: flex; justify-content: space-around; perspective: 1000px; margin-top: 40px;">
+  <a href="https://youtube.com/i23hjf8y2un29fn" style="text-decoration: none; color: white; font-weight: bold; font-size: 1.2rem; transform-style: preserve-3d; transition: all 0.5s; display: inline-block;" onmouseover="this.style.transform='rotateY(15deg) rotateX(15deg) scale(1.1)'; this.querySelector('.icon').style.transform='rotateY(180deg)'" onmouseout="this.style.transform='rotateY(0) rotateX(0) scale(1)'; this.querySelector('.icon').style.transform='rotateY(0)'">
+    <span style="display: flex; align-items: center; background: linear-gradient(45deg, #FF0000, #FF5E00); padding: 15px 25px; border-radius: 50px; box-shadow: 0 10px 20px rgba(255, 0, 0, 0.3), 0 0 0 5px rgba(255, 94, 0, 0.2); transform: translateZ(30px);">
+      <span style="margin-right: 10px;">YouTube</span>
+      <span class="icon" style="display: inline-block; transition: transform 0.5s;">
+        <i class="fab fa-youtube" style="font-size: 1.5rem;"></i>
+      </span>
+    </span>
+  </a>
+
+  <a href="https://instagram.com/instagram" style="text-decoration: none; color: white; font-weight: bold; font-size: 1.2rem; transform-style: preserve-3d; transition: all 0.5s; display: inline-block;" onmouseover="this.style.transform='rotateY(-15deg) rotateX(15deg) scale(1.1)'; this.querySelector('.icon').style.transform='rotate(360deg)'" onmouseout="this.style.transform='rotateY(0) rotateX(0) scale(1)'; this.querySelector('.icon').style.transform='rotate(0deg)'">
+    <span style="display: flex; align-items: center; background: linear-gradient(45deg, #833AB4, #FD1D1D, #FCAF45); padding: 15px 25px; border-radius: 50px; box-shadow: 0 10px 20px rgba(131, 58, 180, 0.3), 0 0 0 5px rgba(253, 29, 29, 0.2); transform: translateZ(30px);">
+      <span style="margin-right: 10px;">Instagram</span>
+      <span class="icon" style="display: inline-block; transition: transform 0.5s;">
+        <i class="fab fa-instagram" style="font-size: 1.5rem;"></i>
+      </span>
+    </span>
+  </a>
+
+  <a href="livetrendynow@gmail.com" style="text-decoration: none; color: white; font-weight: bold; font-size: 1.2rem; transform-style: preserve-3d; transition: all 0.5s; display: inline-block;" onmouseover="this.style.transform='rotateY(15deg) rotateX(-15deg) scale(1.1)'; this.querySelector('.icon').style.transform='translateY(-10px)'" onmouseout="this.style.transform='rotateY(0) rotateX(0) scale(1)'; this.querySelector('.icon').style.transform='translateY(0)'">
+    <span style="display: flex; align-items: center; background: linear-gradient(45deg, #4285F4, #34A853, #FBBC05, #EA4335); padding: 15px 25px; border-radius: 50px; box-shadow: 0 10px 20px rgba(66, 133, 244, 0.3), 0 0 0 5px rgba(251, 188, 5, 0.2); transform: translateZ(30px);">
+      <span style="margin-right: 10px;">Email</span>
+      <span class="icon" style="display: inline-block; transition: transform 0.5s;">
+        <i class="far fa-envelope" style="font-size: 1.5rem;"></i>
+      </span>
+    </span>
+  </a>
+</div>
+</div>
+  </div>
+
+  <audio id="background-audio" loop>
+    <source src="https://drive.google.com/uc?export=download&id=1WM2hE02uZteu0D-KiZMQk4pKNhS2IqyT" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <button class="audio-control" onclick="toggleAudio()">Mute</button>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script>
+    const codeBlock = document.querySelector('.code-block');
+
+    document.addEventListener('mousemove', (e) => {
+      rotateElement(e, codeBlock);
+    });
+
+    function rotateElement(event, element) {
+      const x = event.clientX;
+      const y = event.clientY;
+      
+      const middleX = window.innerWidth / 2;
+      const middleY = window.innerHeight / 2;
+      
+      const offsetX = ((x - middleX) / middleX) * 45;
+      const offsetY = ((y - middleY) / middleY) * 45;
+      
+      element.style.setProperty('--rotateX', -1 * offsetY + 'deg');
+      element.style.setProperty('--rotateY', offsetX + 'deg');
+    }
+
+    // Typing animation
+    const typingElement = document.querySelector('.typing-animation');
+    const titles = ["Amateur Astronomer", "CEO of LiveTrendyNow", "Soap Maker", "Video Editor"];
+    let titleIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typingSpeed = 100;
+
+    function typeAnimation() {
+      const currentTitle = titles[titleIndex];
+      
+      if (isDeleting) {
+        typingElement.textContent = currentTitle.substring(0, charIndex - 1);
+        charIndex--;
+      } else {
+        typingElement.textContent = currentTitle.substring(0, charIndex + 1);
+        charIndex++;
+      }
+      
+      if (!isDeleting && charIndex === currentTitle.length) {
+        isDeleting = true;
+        typingSpeed = 50;
+        setTimeout(typeAnimation, 1500);
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        titleIndex = (titleIndex + 1) % titles.length;
+        typingSpeed = 100;
+        setTimeout(typeAnimation, 500);
+      } else {
+        setTimeout(typeAnimation, typingSpeed);
+      }
+    }
+
+    typeAnimation();
+
+    // Audio control
+    const audio = document.getElementById('background-audio');
+    audio.play();
+
+    function toggleAudio() {
+      if (audio.paused) {
+        audio.play();
+        document.querySelector('.audio-control').textContent = 'Mute';
+      } else {
+        audio.pause();
+        document.querySelector('.audio-control').textContent = 'Unmute';
+      }
+    }
+  </script>
+</body>
+</html>
